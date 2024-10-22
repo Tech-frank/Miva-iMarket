@@ -1,0 +1,30 @@
+{%extends 'Todo/base.html'%}
+    
+    {%block title%}Task Details{%endblock%}
+    
+    {%block content%} 
+        <h1 style="margin: 30px 0; padding: 20px 20px;">{{ task.title }}</h1>
+        <p style="margin: 0px 30px; padding: 0px 20px;">{{ task.date }}</p>
+        <hr style="border: 1px solid #928e8e; margin: 20px 0;">
+
+        <!-- <h4 style="margin: 20px 0; padding: 10px 20px;">Date Created:</h3> -->
+        
+
+        <h4 style="margin: 20px 0; padding: 10px 20px;">Task Description</h3>
+        <p style="margin: 20px 30px; padding: 10px 20px;">{{ task.description }}</p>
+
+        <h4 style="margin: 20px 0px; padding: 10px 20px;">Task Status:</h3>
+        {%if task.complete %}
+        <div style="margin: 20px 30px; padding: 10px 20px;">
+            <p>Complete</p>
+        </div>
+        {%else%}
+        <div style="margin: 20px 30px; padding: 10px 20px;">
+            <p>Incomplete</p>
+        </div>
+            
+        {%endif%}
+        
+        <a href="{% url 'edit_todo' task.pk %}" class="btn btn-primary" style="margin: 40px 40px; padding: 20px 20px; width: 200px;">Edit</a>
+        <a href="{% url 'delete_todo' task.pk %}" class="btn btn-danger" style="margin: 40px 40px; padding: 20px 20px; width: 200px;">Delete</a>
+    {%endblock%}

@@ -1,0 +1,14 @@
+{%extends 'Todo/base.html'%}
+
+{%block title%}Delete Task{%endblock%}
+
+{%block content%}
+    <h1 style="margin: 30px 0; padding: 20px 20px;">Are you sure you want to delete "{{ object.title }}"?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger" style="margin: 20px 20px; padding: 10px 20px;">
+            <a href="{% url 'delete_todo' object.pk%}" class="text-white" style="text-decoration: none;">Delete</a>
+        </button>
+        <a href="{% url 'index' %}" class="btn btn-primary" style="margin: 20px 20px; padding: 10px 20px;">Cancel</a>
+    </form>
+{%endblock%}
